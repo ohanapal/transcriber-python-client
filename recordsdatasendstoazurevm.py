@@ -179,7 +179,7 @@ def upload_audio_file(audio_file_path, session_id, max_speakers, bot_id, start_t
                 files = {'file': (os.path.basename(audio_file_path), file, 'audio/wav')}
                 data = {'session_id': session_id, 'max_speakers': max_speakers, 'bot_id': bot_id}
                 print(f"Uploading audio file {audio_file_path} to {url}")
-                response = requests.post(url, files=files, data=data, timeout=60)  # Increased timeout
+                response = requests.post(url, files=files, data=data, timeout=None)  # Unlimited timeout
                 response.raise_for_status()
                 print(f"Audio file uploaded successfully. Server response: {response.status_code}")
                 upload_successful.set()  # Signal successful upload
